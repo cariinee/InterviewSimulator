@@ -29,6 +29,5 @@ public class Empresa {
     private String telefone;
     @Column(length = 200, nullable = false)
     private String endereco;
-    @Column(length = 200, nullable = false)
-    private String contato;    
+ 
 }

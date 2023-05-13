@@ -15,20 +15,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Candidato {
+public class Entrevista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 200, nullable = false)
-    private String nome;
-    @Column(length = 200, nullable = false)
-    private String cpf;
-    @Column(length = 200, nullable = false)
-    private String email;
-    @Column(length = 200, nullable = false)
-    private String telefone;
-    @Column(length = 200, nullable = false)
-    private String endereco;
-
-
+    private Long pontuacao;
 }
