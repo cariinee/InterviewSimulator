@@ -1,10 +1,13 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +33,6 @@ public class Candidato {
     @Column(length = 200, nullable = false)
     private String endereco;
 
-
+    @OneToMany(mappedBy = "candidato")
+    private List<Entrevista> entrevistas;
 }

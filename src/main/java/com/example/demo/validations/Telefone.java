@@ -5,13 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.example.demo.constraints.NomeCandidatoConstraint;
+import com.example.demo.constraints.CnpjEmpresaConstraint;
 
 import jakarta.validation.Constraint;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = NomeCandidatoConstraint.class)
-public @interface NomeCandidato {
+@Constraint(validatedBy = CnpjEmpresaConstraint.class)
+public @interface Telefone {
     
 }

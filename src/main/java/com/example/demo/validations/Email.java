@@ -12,6 +12,6 @@ import jakarta.validation.Constraint;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = CnpjEmpresaConstraint.class)
-public @interface CnpjEmpresa {
+public @interface Email {
     
 }

@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class EntrevistaDTO {
     private Long id;
     private Long pontuacao;
+    private String tecnologia;
 }
