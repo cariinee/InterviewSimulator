@@ -11,4 +11,7 @@ import com.example.demo.model.Tecnologia;
 @Repository
 public interface EntrevistaRepository extends JpaRepository<Entrevista, Long> {
     List<Entrevista> findByTecnologia(Tecnologia tecnologia);
+
+    boolean existsByEmpresaAndTecnologia(String empresa, String tecnologia);
+
 }

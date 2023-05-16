@@ -16,4 +16,8 @@ public class EntrevistaService {
     public Entrevista registrarEntrevista(Entrevista entrevista) {
         return entrevistaRepository.save(entrevista);
     }
+
+    public boolean empresaPodeAcessarTecnologia(String empresa, String tecnologia) {
+        return entrevistaRepository.existsByEmpresaAndTecnologia(empresa, tecnologia);
+    }
 }

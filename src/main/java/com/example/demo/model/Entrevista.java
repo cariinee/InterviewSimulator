@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +34,10 @@ public class Entrevista {
     @JoinColumn(name = "candidato_id")
     private Candidato candidato;
 
-    // @OneToMany(mappedBy = "entrevista_id")
-    // private List<Tecnologia> tecnologias;
+    @OneToMany(mappedBy = "entrevista", cascade = CascadeType.ALL)
+    private List<Tecnologia> tecnologias;
+
+    @ManyToOne
+    private Empresa empresa;
 
 }

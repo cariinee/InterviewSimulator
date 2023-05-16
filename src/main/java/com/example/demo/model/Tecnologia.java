@@ -29,13 +29,12 @@ public class Tecnologia {
     @Column(length = 200, nullable = false)
     private Integer nivel;
 
-
-    // @ManyToOne
-    // @JoinColumn(name = "entevista_id")
-    // private Entrevista entrevista;
-
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
+
+    @ManyToOne
+    @JoinColumn(name = "entrevista_id")
+    private Entrevista entrevista;
 
 }
