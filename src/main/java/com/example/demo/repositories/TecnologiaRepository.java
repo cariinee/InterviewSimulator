@@ -2,40 +2,28 @@ package com.example.demo.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Candidato;
 import com.example.demo.model.Entrevista;
 import com.example.demo.model.Tecnologia;
 
-import jakarta.persistence.metamodel.SetAttribute;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 @Repository
-public class TecnologiaRepository {
-    private final EntrevistaRepository entrevistaRepository;
-    private final EmpresaRepository empresaRepository;
+public interface TecnologiaRepository extends JpaRepository<Tecnologia, Long>{
+
+    Tecnologia getTecnologiaById(Long id);
 
 
-    @Autowired
-    public TecnologiaRepository(EntrevistaRepository entrevistaRepository, EmpresaRepository empresaRepository) {
-        this.entrevistaRepository = entrevistaRepository;
-        this.empresaRepository = empresaRepository;
-
-    }
-
-
-    public List<Candidato> buscarUsuariosBemNaTecnologia(Tecnologia tecnologia) {
-        List<Candidato> usuariosBemNaTecnologia = new ArrayList<>();
-
-        List<Entrevista> entrevistas = entrevistaRepository.findByTecnologia(tecnologia);
-        for (Entrevista entrevista : entrevistas) {
-            Candidato candidato = entrevista.getCandidato();
-            usuariosBemNaTecnologia.add(candidato);
-        }
-
-        return usuariosBemNaTecnologia;
-    }
 }

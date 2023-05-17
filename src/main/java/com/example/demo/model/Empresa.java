@@ -35,5 +35,11 @@ public class Empresa {
 
     @OneToMany(mappedBy = "empresa")
     private List<Tecnologia> tecnologias;
+
+    public boolean temAcessoTecnologia(Tecnologia tecnologia) {
+        // Implemente as regras de negócio para verificar se a empresa tem acesso à tecnologia.
+        // Por exemplo, verifique se a empresa possui um relacionamento com a tecnologia.
+        return this.tecnologias.contains(tecnologia);
+    }
  
 }

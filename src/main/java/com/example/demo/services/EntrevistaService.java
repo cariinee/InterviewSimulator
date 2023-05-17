@@ -2,22 +2,15 @@ package com.example.demo.services;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dtos.EntrevistaDTO;
 import com.example.demo.model.Entrevista;
-import com.example.demo.repositories.EntrevistaRepository;
 
 @Service
-public class EntrevistaService {
-    private final EntrevistaRepository entrevistaRepository;
+public interface EntrevistaService {
+    
+    Entrevista salvar(EntrevistaDTO empresaDTO);
 
-    public EntrevistaService(EntrevistaRepository entrevistaRepository) {
-        this.entrevistaRepository = entrevistaRepository;
-    }
+    void remover(Long id);
 
-    public Entrevista registrarEntrevista(Entrevista entrevista) {
-        return entrevistaRepository.save(entrevista);
-    }
-
-    public boolean empresaPodeAcessarTecnologia(String empresa, String tecnologia) {
-        return entrevistaRepository.existsByEmpresaAndTecnologia(empresa, tecnologia);
-    }
+    void editar(Long id, EntrevistaDTO empresaDto);
 }

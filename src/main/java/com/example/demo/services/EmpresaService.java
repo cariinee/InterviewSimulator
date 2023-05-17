@@ -2,20 +2,19 @@ package com.example.demo.services;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dtos.EmpresaDTO;
 import com.example.demo.model.Empresa;
-import com.example.demo.repositories.EmpresaRepository;
 
 @Service
-public class EmpresaService {
-    private final EmpresaRepository empresaRepository;
+public interface EmpresaService {
 
-    public EmpresaService(EmpresaRepository empresaRepository) {
-        this.empresaRepository = empresaRepository;
-    }
+    Empresa salvar(EmpresaDTO empresaDTO);
 
-    public Empresa cadastrarEmpresa(Empresa empresa) {
-        return empresaRepository.save(empresa);
-    }
+    void remover(Long id);
+
+    void editar(Long id, EmpresaDTO empresaDto);
+
+    boolean validarAcessoTecnologia(Long empresaId, Long tecnologiaId);
 
     
 }

@@ -27,15 +27,15 @@ public class Entrevista {
     private Long id;
     @Column(length = 200, nullable = false)
     private Long pontuacao;
-    @Column(length = 200, nullable = false)
-    private String tecnologia;
+    // @Column(length = 200, nullable = false)
+    // private String tecnologia;
 
     @ManyToOne
     @JoinColumn(name = "candidato_id")
     private Candidato candidato;
 
     @OneToMany(mappedBy = "entrevista", cascade = CascadeType.ALL)
-    private List<Tecnologia> tecnologias;
+    private List<Tecnologia> tecnologia;
 
     @ManyToOne
     private Empresa empresa;

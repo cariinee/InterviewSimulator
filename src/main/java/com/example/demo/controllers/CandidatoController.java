@@ -25,7 +25,7 @@ public class CandidatoController {
         this.candidatoService = candidatoService;
     }
 
-    @PostMapping
+    @PostMapping("/api/candidato")
     @ResponseStatus(HttpStatus.CREATED)
     public Candidato salvar(@Valid @RequestBody CandidatoDTO candidatoDTO) {
         Candidato c = candidatoService.salvar(candidatoDTO);
