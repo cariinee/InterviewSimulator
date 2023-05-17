@@ -1,47 +1,48 @@
 package com.example.demo.controllers;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import java.util.Collections;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dtos.CandidatoDTO;
-import com.example.demo.model.Candidato;
-import com.example.demo.services.CandidatoService;
 
-import jakarta.validation.Valid;
+import com.example.demo.model.Candidato;
+import com.example.demo.model.Tecnologia;
+import com.example.demo.repositories.CandidatoRepository;
+import com.example.demo.repositories.TecnologiaRepository;
+
 
 @RestController
-@RequestMapping("/api/candidato")
+@RequestMapping()
 public class CandidatoController {
-    private CandidatoService candidatoService;
+    @Autowired
+    private CandidatoRepository candidatoRepository;
 
-    public CandidatoController(CandidatoService candidatoService){
-        this.candidatoService = candidatoService;
+    @Autowired
+    private TecnologiaRepository tecnologiaRepository;
+    
+    @PostMapping()
+    public Candidato cadastrarCandidato(@RequestBody Candidato candidato) {
+        return candidatoRepository.save(candidato);
     }
-
-    @PostMapping("/api/candidato")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Candidato salvar(@Valid @RequestBody CandidatoDTO candidatoDTO) {
-        Candidato c = candidatoService.salvar(candidatoDTO);
-        return c;
+    
+    @GetMapping("/buscar-candidatos/{tecnologiaId}")
+    public List<Candidato> buscarCandidatosBemNaTecnologia(@PathVariable Long tecnologiaId) {
+        Tecnologia tecnologia = tecnologiaRepository.findById(tecnologiaId).orElse(null);
+        
+        if (tecnologia != null) {
+            // Buscar candidatos que foram bem na tecnologia específica
+            // Implemente a lógica de busca aqui
+            return Collections.emptyList(); // ou a lista de candidatos encontrados
+        }
+        
+        return Collections.emptyList();
     }
-
-
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCurso(@PathVariable Long id) {
-        candidatoService.remover(id);
-    }
-
-    @PutMapping("{id}")
-    public void editCurso(@PathVariable Long id, @RequestBody CandidatoDTO dto) {
-        candidatoService.editar(id, dto);
-    }
-
 }

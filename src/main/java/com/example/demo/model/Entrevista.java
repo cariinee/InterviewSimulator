@@ -38,6 +38,10 @@ public class Entrevista {
     private List<Tecnologia> tecnologia;
 
     @ManyToOne
+    @JoinColumn(name = "empresa_id")
     private Empresa empresa;
+
+    private boolean resultado;
+
 
 }
