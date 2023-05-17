@@ -38,9 +38,8 @@ public class CandidatoController {
         Tecnologia tecnologia = tecnologiaRepository.findById(tecnologiaId).orElse(null);
         
         if (tecnologia != null) {
-            // Buscar candidatos que foram bem na tecnologia específica
-            // Implemente a lógica de busca aqui
-            return Collections.emptyList(); // ou a lista de candidatos encontrados
+            List<Candidato> candidatos = candidatoRepository.findByPontuacao(tecnologia, 6);
+            return candidatos;
         }
         
         return Collections.emptyList();

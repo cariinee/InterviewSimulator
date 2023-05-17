@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,11 +36,15 @@ public class EmpresaController {
         
         if (empresa != null && tecnologia != null) {
             // Verificar se a empresa tem acesso à tecnologia
-            // Implemente a lógica de validação aqui
-            return true; // ou false, dependendo da lógica de validação
+            List<Tecnologia> tecnologiasAcesso = empresa.getTecnologiasAcesso(); // Obtém a lista de tecnologias de acesso da empresa
+            for (Tecnologia t : tecnologiasAcesso) {
+                if (t.getId().equals(tecnologiaId)) {
+                    return true; // A empresa tem acesso à tecnologia
+                }
+            }
         }
         
-        return false;
+        return false; // A empresa não tem acesso à tecnologia
 }
     
     // outros métodos

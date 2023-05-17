@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Tecnologia;
 
 
-
 @Repository
 public interface TecnologiaRepository extends JpaRepository<Tecnologia, Long>{
 
