@@ -35,4 +35,7 @@ public class Candidato {
 
     @OneToMany(mappedBy = "candidato")
     private List<Entrevista> entrevistas;
+
+    @Column
+    private int pontuacao;
 }

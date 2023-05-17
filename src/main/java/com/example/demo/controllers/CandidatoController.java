@@ -33,15 +33,15 @@ public class CandidatoController {
         return candidatoRepository.save(candidato);
     }
     
-    @GetMapping("/buscar-candidatos/{tecnologiaId}")
-    public List<Candidato> buscarCandidatosBemNaTecnologia(@PathVariable Long tecnologiaId) {
-        Tecnologia tecnologia = tecnologiaRepository.findById(tecnologiaId).orElse(null);
+    // @GetMapping("/buscar-candidatos/{tecnologiaId}")
+    // public List<Candidato> buscarCandidatosBemNaTecnologia(@PathVariable Long tecnologiaId) {
+    //     Tecnologia tecnologia = tecnologiaRepository.findById(tecnologiaId).orElse(null);
         
-        if (tecnologia != null) {
-            List<Candidato> candidatos = candidatoRepository.findByPontuacao(tecnologia, 6);
-            return candidatos;
-        }
+    //     if (tecnologia != null) {
+    //         List<Candidato> candidatos = candidatoRepository.findByPontuacao(tecnologia, 6);
+    //         return candidatos;
+    //     }
         
-        return Collections.emptyList();
-    }
+    //     return Collections.emptyList();
+    // }
 }

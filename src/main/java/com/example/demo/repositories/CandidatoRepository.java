@@ -13,6 +13,6 @@ public interface CandidatoRepository extends JpaRepository<Candidato, Long>{
 
     List<Candidato> findAllByOrderByNome();
 
-    List<Candidato> findByPontuacao(Tecnologia tecnologia, int pontuacao);
+    // List<Candidato> findByPontuacao(Tecnologia tecnologia, int pontuacao);
 
 }
